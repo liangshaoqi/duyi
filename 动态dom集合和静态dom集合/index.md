@@ -1,0 +1,2 @@
+document.getElementsByClassName获取的是动态的dom,后续改变会改变其中的数据,HTMLCollection类型  
+document.querySelectorAll 静态dom,获取时的快照,NodeList类型
