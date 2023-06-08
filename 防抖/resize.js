@@ -14,7 +14,7 @@ function debounce(fn, delay) {
   return function () {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      fn.apply(this, arguments)
+      fn.apply(this, arguments) // arguments是上一层的参数,即debounce中的参数param1, param2
     }, delay)
   }
 }
