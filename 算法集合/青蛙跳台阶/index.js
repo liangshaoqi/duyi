@@ -11,4 +11,4 @@ function fibonacci(n) {
   return last1
 }
 
-console.log(fibonacci(20))
+console.log(fibonacci(5))
