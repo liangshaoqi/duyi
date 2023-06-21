@@ -25,4 +25,4 @@ Recalculate Style: 重新计算样式消耗时间
 Layout: 布局消耗时间  
 最后点击后面的app.js,浏览器会自动跳转到对应的出现性能问题的js  
 ![Alt text](image-6.png)  
-offsetTop代码导致了回流
+最终原因是每次获取offsetTop代码导致了回流

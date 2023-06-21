@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class A {
+      #abc; // 定义一个私有字段
+      constructor() {
+        this.#abc = 1
+      }
+      #getA() {
+        console.log(this.#abc)
+      }
+    }
+    let a = new A()
+    console.log(a.#adc)
+    // a.#getA()
+  </script>
+</body>
+</html>

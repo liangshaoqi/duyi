@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script async src="./async.js"></script>
+  <script defer src="./defer.js"></script>
+  <script defer src="./defer.js"></script>
+  <script>
+    console.log("开始阻塞");
+
+    const startTime = Date.now();
+    let currentTime = startTime;
+
+    while (currentTime - startTime < 5000) {
+      currentTime = Date.now();
+    }
+
+    console.log("阻塞结束");
+    console.log("继续执行");
+    console.log('正常底部加载的js脚步')
+    window.onload = () => {
+      console.log('window.onload')
+    }
+  </script>
+</body>
+
+</html>
