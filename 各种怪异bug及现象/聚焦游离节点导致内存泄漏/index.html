@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>
+    <button onclick="toggleInput(false)">不聚焦,创建一个2s销毁的input</button>
+    <button onclick="toggleInput(true)">聚焦,创建一个2s销毁的input</button>
+  </p>
+  <script>
+    // 调试方法使用性能工具,先进行一次垃圾回收,点击录制,点击按钮,等待2s,然后点击垃圾回收,停止录制,点击选项卡查看node节点
+    // 场景: 单页面应用中,表单元素,  创建,聚焦,销毁,谷歌浏览器不会销毁最后一个聚焦的表单元素(富文本框比较占用内存),解决办法,将焦点切换到页面中已有的元素上面可以解决,单纯使用blur方式并不能解决内存泄漏
+    function toggleInput(isFocus) {
+      const inp = document.createElement('input')
+      inp.value = '2s后销毁'
+      document.body.appendChild(inp)
+      isFocus && inp.focus()
+      setTimeout(() => {
+        inp.remove()
+      }, 2000)
+    }
+
+  </script>
+</body>
+
+</html>
