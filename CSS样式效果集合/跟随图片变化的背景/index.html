@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      height: 100%;
+      background-image: linear-gradient(var(--c1), var(--c2), var(--c3));
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 1010px;
+      margin: 0 auto;
+    }
+
+    .item>img {
+      width: 500px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="item">
+      <img src="../../公用images/1.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../公用images/5.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../公用images/6.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="../../公用images/7.jpg" alt="">
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+  <script>
+    const html = document.documentElement
+    const colorThief = new ColorThief();
+    document.querySelector('.grid').addEventListener('mouseover', async (e) => {
+      const target = e.target
+      if (target.matches('.item > img')) {
+        const colors = await colorThief.getPalette(target, 3)
+        console.log(colors)
+        const [c1, c2, c3] = colors.map(c => `rgb(${c[0]},${c[1]},${c[2]})`)
+        console.log(c1, c2, c3)
+        html.style.setProperty('--c1', c1)
+        html.style.setProperty('--c2', c2)
+        html.style.setProperty('--c3', c3)
+      }
+    })
+    document.querySelector('.grid').addEventListener('mouseleave', async (e) => {
+      html.style.setProperty('--c1', '#fff')
+      html.style.setProperty('--c2', '#fff')
+      html.style.setProperty('--c3', '#fff')
+    })
+
+  </script>
+</body>
+
+</html>
