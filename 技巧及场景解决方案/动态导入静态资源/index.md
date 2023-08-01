@@ -1,0 +1,1 @@
+类似vue或者react中的项目，使用vite或者webpack打包，需要动态导入图片等静态资源，我们可以使用new URL('./images/image1.png', import.meta.url)，来获取打包后的路径，而不使用await import(imageUrl)或者将静态文件直接放在public的static也是不合理的

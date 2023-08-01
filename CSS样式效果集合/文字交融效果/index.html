@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    html,body {
+      padding: 0;
+      margin: 0;
+      background-color: #000;
+      height: 100vh;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      
+      /* 对比度,黑的越黑,白的越白 */
+      filter: contrast(30); 
+      /* 必须有一个背景色 */
+      background-color: #000; 
+    }
+    .text {
+      color: #fff;
+      font-size: 100px;
+      animation: showup 2s forwards;
+    }
+    @keyframes showup {
+      from {
+        letter-spacing: -50px;
+        filter: blur(10px);
+      }
+      to {
+        letter-spacing: 10px;
+        filter: blur(2px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="text">的常朋的弟生人，欲。</span>
+  </div>
+</body>
+</html>
