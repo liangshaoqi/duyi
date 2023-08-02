@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      background-color: #333;
+    }
+    .box {
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+      margin-top: 50px;
+      display: grid;
+      --c1: 1fr;
+      --c2: 1fr;
+      --c3: 1fr;
+      --r1: 1fr;
+      --r2: 1fr;
+      --r3: 1fr;
+      grid-template-columns: var(--c1) var(--c2) var(--c3);
+      grid-template-rows: var(--r1) var(--r2) var(--r3);
+      grid-gap: 10px;
+      transition: .3s;
+    }
+    /* 当第一个子元素被hover的时候,选择的父元素 */
+    .box:has(.item:nth-child(1):hover) {
+      --r1: 2fr;
+      --c1: 2fr;
+    }
+    .box:has(.item:nth-child(2):hover) {
+      --r1: 2fr;
+      --c2: 2fr;
+    }
+    .box:has(.item:nth-child(3):hover) {
+      --r1: 2fr;
+      --c3: 2fr;
+    }
+    .box:has(.item:nth-child(4):hover) {
+      /* 第二行 */
+      --r2: 2fr; 
+      /* 第一列 */
+      --c1: 2fr;
+    }
+    .box:has(.item:nth-child(5):hover) {
+      --r2: 2fr; 
+      --c2: 2fr;
+    }
+    .box:has(.item:nth-child(6):hover) {
+      --r2: 2fr; 
+      --c3: 2fr;
+    }
+    .box:has(.item:nth-child(7):hover) {
+      --r3: 2fr; 
+      --c1: 2fr;
+    }
+    .box:has(.item:nth-child(8):hover) {
+      --r3: 2fr; 
+      --c2: 2fr;
+    }
+    .box:has(.item:nth-child(9):hover) {
+      --r3: 2fr; 
+      --c3: 2fr;
+    }
+    .item:nth-child(1) {
+      background-color: red;
+    }
+    .item:nth-child(2) {
+      background-color: #47c2ff;
+    }
+    .item:nth-child(3) {
+      background-color: #cc1871;
+    }
+    .item:nth-child(4) {
+      background-color: #ff7541;
+    }
+    .item:nth-child(5) {
+      background-color: #fff;
+    }
+    .item:nth-child(6) {
+      background-color: #1221ff;
+    }
+    .item:nth-child(7) {
+      background-color: #47d1ff;
+    }
+    .item:nth-child(8) {
+      background-color: #478bff;
+    }
+    .item:nth-child(9) {
+      background-color: #47c2cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+</body>
+</html>
