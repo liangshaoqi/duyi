@@ -41,6 +41,6 @@ async function insertLinks() {
 async function main () {
   await searchDomain()
 
-  await insertLinks
+  await insertLinks()
 }
 main()
