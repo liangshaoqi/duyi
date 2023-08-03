@@ -10,6 +10,10 @@ const Home = () => {
       navigate('/routeIdPage/1')
     }}>按钮</Button>
     <Link to='/routeIdPage/998'>路由id传递</Link>
+    <img src="https://www.bai.com/img.png" alt="" />
+    <img src="www.1.com/img.png" alt="" />
+    <img src="www.2.com/img.png" alt="" />
+    <img src="www.3.com/img.png" alt="" />
     <Input></Input>
     <Switch checkedChildren="开启" unCheckedChildren="关闭" defaultChecked />
   </div>;
