@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball {
+      --delay: 0s;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 100%;
+      animation: eyaChange 1s var(--delay) linear forwards paused;
+
+    }
+
+    @keyframes eyaChange {
+      0% {
+        clip-path: polygon(0 83%, 100% 0, 100% 100%, 0 100%);
+      }
+
+      100% {
+        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    .face {
+      --delay: 0s;
+      width: 150px;
+      height: 150px;
+      background-color: yellow;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eye {
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 35px;
+
+
+    }
+
+    .eye:nth-child(1) {
+      left: 30px;
+      animation: eye1 1s var(--delay) linear forwards paused;
+    }
+
+    .eye:nth-child(2) {
+      right: 30px;
+      animation: eye2 1s var(--delay) linear forwards paused;
+    }
+
+    .mouth {
+      width: 50px;
+      height: 30px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 90px;
+      left: 50px;
+      animation: mouth 1s var(--delay) linear forwards paused;
+    }
+    @keyframes face {
+      0% {
+        background-color: greenyellow;
+      }
+      100% {
+        background-color: red;
+      }
+    }
+
+    @keyframes eye1 {
+      0% {
+        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%);
+      }
+
+      100% {
+        clip-path: polygon(0 83%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    @keyframes eye2 {
+      0% {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+
+      100% {
+        clip-path: polygon(0 0, 100% 83%, 100% 100%, 0% 100%);
+      }
+    }
+
+    @keyframes mouth {
+      0% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+      }
+
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ball"></div>
+  <input type="range" min="0" max="1" step=".01">
+  <div class="face">
+    <div class="eye"></div>
+    <div class="eye"></div>
+    <div class="mouth"></div>
+  </div>
+  <script>
+    // 注意事项: 主要是保持动画的延迟和动画秒数相同,还有inpu的最大值就是秒数
+    const inpu = document.querySelector('input')
+    const face = document.querySelector('.face')
+    const ball = document.querySelector('.ball')
+    const cal = () => {
+      // js移动时间轴
+      face.style.setProperty('--delay', `-${inpu.value}s`)
+      ball.style.setProperty('--delay', `-${inpu.value}s`)
+    }
+    inpu.oninput = cal
+    cal()
+  </script>
+</body>
+
+</html>
