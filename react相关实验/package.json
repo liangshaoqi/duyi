@@ -44,6 +44,7 @@
     "@craco/craco": "^7.1.0",
     "glob": "^10.3.3",
     "node-html-parser": "^6.1.5",
+    "sass": "^1.64.2",
     "url-regex": "^5.0.0",
     "webpack-bundle-analyzer": "^4.9.0"
   }

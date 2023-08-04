@@ -30,9 +30,8 @@ function Example(name) {
 
 Object.defineProperty(Example.prototype, 'func', {
   value: function () {
-    // 不可通过new调用
-    if (this instanceof Example) {
-      throw new Error('不能通过new创建')
+    if (!(this instanceof Example)) {
+      throw new Error('通过new创建')
     }
     console.log(this.name)
   },

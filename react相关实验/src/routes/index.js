@@ -26,5 +26,15 @@ const routes =[
       },
     ]
   },
+  {
+    name: 'css',
+    children: [
+      {
+        name: '切换css主题',
+        path: '/theme',
+        component: lazy(() => import('../views/theme'))
+      },
+    ]
+  }
 ]
 export default routes
