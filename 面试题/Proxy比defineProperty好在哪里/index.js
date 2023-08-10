@@ -14,7 +14,7 @@ Object.defineProperty(obj, 'a', {
 })
 
 obj.a = 2
-// 使用defineProperty是对每个属性进行遍历添加get和set方法来进行监听,无法监听之后添加的数据的改动,因为之后添加的数据没有添加get和set
+// 使用defineProperty是对每个属性进行递归遍历添加get和set方法来进行监听,无法监听之后添加的数据的改动,因为之后添加的数据没有添加get和set
 
 // Proxy不需要遍历,是产生了新的代理对象,我们操作的是新的对象不是原始对象,所以每次修改都是直接操作新对象,所有修改都能监听到
 const proxy = new Proxy(obj, {

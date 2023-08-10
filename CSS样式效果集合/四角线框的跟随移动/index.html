@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      background-color: #333;
+    }
+    .container {
+      position: relative;
+      display: grid;
+      width: 34%;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto auto auto;
+      gap: 30px;
+      margin: 0 auto;
+      margin-top: 150px;
+    }
+    .pointer {
+      position: absolute;
+      --t: 3px; /* 线条的粗细 */
+      --l: 30px; /* 线条的长度 */
+      --g: 15px; /* 线条与图片的间隔 */
+      --s: 200px; /* 图片的尺寸 */
+      --x: 0px;
+      --y: 0px;
+      left: 0;
+      top: 0;
+      width: calc(var(--s) + 2 * var(--g));
+      height: calc(var(--s) + 2 * var(--g));
+      border: var(--t) solid #fff;
+      margin-left: calc(var(--g) * -1);
+      margin-top: calc(var(--g) * -1);
+      transform: translate(var(--x), var(--y));
+      transition: .3s;
+      -webkit-mask: conic-gradient(
+        at var(--l) var(--l),
+        transparent 75%,
+        blue 75% 100%
+      )
+      0 0 / calc(100% - var(--l)) calc(100% - var(--l));
+    }
+    .item {
+      width: 200px;
+      height: 200px;
+    
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item"><img src="../../公用images/1.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/2.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/3.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/4.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/5.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/6.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/7.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/8.jpg" alt=""></div>
+    <div class="item"><img src="../../公用images/9.jpg" alt=""></div>
+    <div class="pointer"></div>
+  </div>
+  <script>
+    const imgs = document.querySelectorAll('.container img')
+    const pointer = document.querySelector('.pointer')
+    for (const img of imgs) {
+      img.onmouseenter = () => {
+        const size = img.offsetWidth
+        const x = img.offsetLeft // 获取相对定位的父元素与img的x坐标
+        const y = img.offsetTop
+        pointer.style.setProperty('--x', x + 'px')
+        pointer.style.setProperty('--y', y + 'px')
+        pointer.style.setProperty('--s', size + 'px')
+      }
+    }
+  </script>
+</body>
+</html>

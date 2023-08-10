@@ -29,4 +29,4 @@ function _compose(arr1, arr2) {
 }
 // keyboardMap('2339876')
 
-console.log(keyboardMap('2345'))
+console.log(keyboardMap('577'))
