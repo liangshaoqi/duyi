@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片懒加载</title>
+  </head>
+  <body>
+    <script>
+      window.onload = () => {
+        // const myImage = function () {
+        //   // 该节点用于展示真实的图片,起始时先展示loading
+        //   const imgNode = document.createElement('img')
+        //   document.body.append(imgNode)
+        //   // 创建对象用于监听真实图片是否加载成功
+        //   const img = new Image()
+        //   img.onload = () => {
+        //     setTimeout(() => {
+        //       imgNode.src = img.src
+        //     }, 2000)
+        //   }
+        //   return {
+        //     setSrc: function (src) {
+        //       imgNode.src = 'http://img.lanrentuku.com/img/allimg/1212/5-121204193R0.gif'
+        //       img.src = src
+        //     }
+        //   }
+        // }
+        // console.log(myImage)
+        // let imgProxy = new myImage()
+        // imgProxy.setSrc('./4.jpg')
+
+
+        
+        // 代理对象和真实对象拥有相同方法
+        // 真实对象
+        const MyImage = function () {
+          // 创建img元素
+          const img = document.createElement("img");
+          document.body.append(img)
+          return {
+            setSrc: function (src) {
+              img.src = src
+            },
+          };
+        };
+        const myImage = new MyImage()
+        // 代理对象
+        const ProxyImage = function () {
+          // 创建代理img对象
+          const image = new Image()
+          image.onload = () => {
+            setTimeout(() => {
+              myImage.setSrc(image.src)
+            }, 1000)
+          }
+          return {
+            setSrc: function (src) {
+              // 先设置loading站位
+              myImage.setSrc("http://img.lanrentuku.com/img/allimg/1212/5-121204193R0.gif")
+              // 再设置真实图片
+              image.src = src
+            },
+          };
+        };
+        const proxyImage = ProxyImage()
+        proxyImage.setSrc("./4.jpg");
+      };
+    </script>
+  </body>
+</html>
